@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade | Farmácia Oriental de Lisboa</title>
+  <style>
+    :root{
+      --bg: #FBFAFD;
+      --surface: #F4F0FA;
+      --surface-2: #EFE9F9;
+      --ink: #2A2438;
+      --ink-soft: #6B6478;
+      --purple-deep: #B691B3;
+      --purple-deep-2: #5C3659;
+      --purple-soft: #A98FD2;
+      --purple-pale: #E8DFF7;
+      --gold: #C9A66B;
+      --line: #E4DEF0;
+      --white: #FFFFFF;
+      --shadow-sm: 0 1px 2px rgba(43,30,66,.04), 0 1px 1px rgba(43,30,66,.03);
+      --shadow-md: 0 8px 24px rgba(43,30,66,.08);
+      --shadow-lg: 0 24px 60px rgba(43,30,66,.14);
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --ease: cubic-bezier(.16,.8,.28,1);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:'Inter',system-ui,-apple-system,sans-serif;
+      font-size:16px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    h1,h2,h3,h4{
+      font-family:'Fraunces',Georgia,serif;
+      color:var(--ink);
+      margin:0;
+      font-weight:500;
+      letter-spacing:-.01em;
+      line-height:1.12;
+    }
+    p{margin:0}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+    .eyebrow{
+      font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--purple-soft);font-weight:600;
+    }
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:14px 26px;border-radius:100px;font-weight:600;font-size:.94rem;
+      transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .3s var(--ease);
+      white-space:nowrap;
+    }
+    .btn-primary{background:var(--purple-deep);color:#fff;text-shadow:0 1px 1px rgba(0,0,0,.15)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+    .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+    .btn-ghost:hover{border-color:var(--purple-soft);transform:translateY(-2px)}
+    .btn-sm{padding:10px 18px;font-size:.84rem}
+
+    .nav{
+      position:sticky;top:0;z-index:100;background:var(--purple-deep);
+      border-bottom:1px solid rgba(0,0,0,.08);
+    }
+    .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+    .brand{display:flex;align-items:center;gap:10px;background:#fff;padding:8px 16px;border-radius:100px;box-shadow:var(--shadow-sm)}
+    .brand img{height:32px;width:auto}
+    .nav-links{display:flex;gap:32px;align-items:center}
+    .nav-links a{font-size:.92rem;font-weight:500;color:#fff;opacity:.86;position:relative;padding:4px 0;transition:opacity .25s;text-shadow:0 1px 1px rgba(0,0,0,.1)}
+    .nav-links a:hover{opacity:1}
+    .nav-links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:#fff;transition:width .3s var(--ease)}
+    .nav-links a:hover::after{width:100%}
+    .nav-cta{display:flex;align-items:center;gap:14px}
+    .nav .btn-ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+    .nav .btn-ghost:hover{border-color:#fff}
+    .nav .btn-primary{border:1.5px solid rgba(255,255,255,.4);box-shadow:0 2px 10px rgba(0,0,0,.1)}
+
+    .hero{
+      padding:80px 0 48px;
+      background:linear-gradient(135deg, #ffffff 0%, #f7ebf7 100%);
+    }
+    .hero h1{font-size:clamp(2rem,3.4vw,3rem);margin:0 0 16px;color:var(--purple-deep-2)}
+    .hero p.lead{max-width:780px;font-size:1.05rem;color:var(--ink-soft);margin:0 0 8px}
+    .hero .updated{font-size:.85rem;color:var(--purple-soft);font-weight:600}
+
+    main{padding:16px 0 72px}
+    .card{
+      background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);
+      padding:30px 28px;box-shadow:var(--shadow-md);margin-bottom:24px;
+    }
+    .card h2, .card h3{margin-top:0;color:var(--purple-deep-2)}
+    .card h3{font-size:1.08rem;margin-bottom:6px}
+    .card p, .card li{color:var(--ink-soft)}
+    .card p + p{margin-top:12px}
+    .card ul{padding-left:18px;margin:0}
+    .card ul li + li{margin-top:6px}
+    .card hr{border:0;border-top:1px solid var(--line);margin:18px 0 24px}
+    .note{color:var(--purple-deep-2);font-weight:600}
+    .subsection + .subsection{margin-top:22px}
+    .pill-index{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+    .pill-index a{
+      font-size:.82rem;font-weight:600;color:var(--purple-deep-2);
+      background:var(--surface);border:1px solid var(--line);
+      padding:8px 16px;border-radius:100px;transition:background .2s var(--ease), border-color .2s var(--ease);
+    }
+    .pill-index a:hover{background:var(--purple-pale);border-color:var(--purple-soft)}
+    table.legal-table{width:100%;border-collapse:collapse;margin-top:8px}
+    table.legal-table th, table.legal-table td{
+      text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);
+      font-size:.92rem;color:var(--ink-soft);vertical-align:top;
+    }
+    table.legal-table th{color:var(--purple-deep-2);font-weight:600;font-family:'Fraunces',Georgia,serif}
+    table.legal-table tr:last-child td{border-bottom:none}
+
+    footer{background:var(--purple-deep-2);color:#EFE6FB;padding-top:0}
+    .footer-top{padding:72px 0 48px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+    .brand-col .logo-badge{display:inline-flex;background:#fff;padding:10px 16px;border-radius:100px;margin-bottom:16px}
+    .brand-col .logo-badge img{height:30px;display:block}
+    .brand-col p{opacity:.65;font-size:.9rem;max-width:280px}
+    footer h5{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;opacity:.6;margin-bottom:18px;font-weight:600}
+    footer ul{list-style:none;padding:0;margin:0}
+    footer ul li{margin-bottom:11px}
+    footer a{opacity:.75;font-size:.92rem;transition:opacity .2s}
+    footer a:hover{opacity:1;text-decoration:underline}
+    .footer-social{display:flex;gap:10px;margin-top:18px}
+    .icon-btn{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);transition:background .2s}
+    .icon-btn:hover{background:rgba(255,255,255,.2)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding:22px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;opacity:.6}
+    @media (max-width:820px){.footer-grid{grid-template-columns:1fr 1fr;row-gap:36px}}
+
+    @media (max-width:920px){
+      .nav-links{display:none}
+      .nav .wrap{height:auto;padding:14px 24px}
+      .nav .btn-ghost{display:none}
+    }
+    @media (max-width:720px){
+      .card{padding:24px 20px}
+      .hero{padding-top:56px}
+      table.legal-table th, table.legal-table td{padding:10px 8px;font-size:.85rem}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="FarmáciaOriental MAIN LINK UPDATED CLICK HERE.html">
+        <img src="imagens.farmacia/farmaciaoriental.logo.main.jpg" alt="Farmácia Oriental de Lisboa">
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="FarmáciaOriental MAIN LINK UPDATED CLICK HERE.html">Início</a>
+        <a href="FarmáciaOriental MAIN LINK UPDATED CLICK HERE.html">Serviços</a>
+        <a href="FarmáciaOriental MAIN LINK UPDATED CLICK HERE.html">Pick Up and Go</a>
+        <a href="FarmáciaOriental MAIN LINK UPDATED CLICK HERE.html">Equipa</a>
+        <a href="FarmáciaOriental MAIN LINK UPDATED CLICK HERE.html">Localização</a>
+        <a href="FarmáciaOriental MAIN LINK UPDATED CLICK HERE.html">Contactos</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="FarmáciaOriental MAIN LINK UPDATED CLICK HERE.html" class="btn btn-ghost btn-sm">Contactar</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Informação legal</p>
+        <h1>Política de Privacidade</h1>
+        <p class="lead">A Farmácia Oriental de Lisboa respeita a privacidade dos seus Clientes e Utilizadores. Esta página explica que dados pessoais recolhemos, para que finalidades, com que fundamento legal e quais os seus direitos, em conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD) e a legislação portuguesa aplicável.</p>
+        <p class="updated">Última atualização: julho de 2026</p>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <article class="card">
+        <p class="pill-index">
+          <a href="#responsavel">Responsável</a>
+          <a href="#dados">Dados recolhidos</a>
+          <a href="#recolha">Como recolhemos</a>
+          <a href="#finalidades">Finalidades e base legal</a>
+          <a href="#partilha">Partilha com terceiros</a>
+          <a href="#transferencias">Transferências internacionais</a>
+          <a href="#conservacao">Conservação</a>
+          <a href="#direitos">Os seus direitos</a>
+          <a href="#automatizadas">Decisões automatizadas</a>
+          <a href="#seguranca">Segurança</a>
+          <a href="#alteracoes">Alterações</a>
+          <a href="#contactos">Contactos</a>
+        </p>
+      </article>
+
+      <article class="card" id="responsavel">
+        <h2>Responsável pelo Tratamento de Dados</h2>
+        <hr>
+        <p>A entidade responsável pelo tratamento dos dados pessoais recolhidos através deste website é a <strong>Farmácia Oriental de Lisboa</strong>, com sede na Avenida Dom João II, Lote 8, Loja A/B, 1990-306 Lisboa, contactável através do email <a href="mailto:orientalfarmacia@gmail.com">orientalfarmacia@gmail.com</a>.</p>
+      </article>
+
+      <article class="card" id="dados">
+        <h2>Dados Pessoais Recolhidos</h2>
+        <hr>
+        <p>No âmbito da nossa atividade, poderemos recolher os seguintes tipos de dados pessoais, consoante a interação que tem connosco:</p>
+        <ul>
+          <li>Dados de identificação e contacto (nome, email, número de telefone), fornecidos através dos formulários de contacto do website;</li>
+          <li>Dados fornecidos no âmbito da subscrição da nossa newsletter;</li>
+          <li>Dados de navegação recolhidos automaticamente através de cookies e tecnologias semelhantes (ver a nossa <a href="politica-cookies.html">Política de Cookies</a>).</li>
+        </ul>
+      </article>
+
+      <article class="card" id="recolha">
+        <h2>Como Recolhemos os Seus Dados Pessoais</h2>
+        <hr>
+        <ul>
+          <li>Diretamente através do nosso website, nomeadamente através dos formulários de contacto;</li>
+          <li>Quando subscreve o envio das nossas newsletters, mediante o seu consentimento prévio;</li>
+          <li>Automaticamente, através de cookies e tecnologias semelhantes, durante a navegação no website.</li>
+        </ul>
+      </article>
+
+      <article class="card" id="finalidades">
+        <h2>Finalidades e Base Legal do Tratamento</h2>
+        <hr>
+        <p>Os seus dados pessoais são tratados para as seguintes finalidades, com o correspondente fundamento legal previsto no artigo 6.º do RGPD:</p>
+        <table class="legal-table">
+          <tr><th>Finalidade</th><th>Base legal</th></tr>
+          <tr><td>Resposta a pedidos de contacto e prestação de esclarecimentos</td><td>Execução de diligências pré-contratuais a seu pedido</td></tr>
+          <tr><td>Prestação dos serviços contratados e gestão da relação com o cliente</td><td>Execução de contrato de prestação de serviços</td></tr>
+          <tr><td>Envio de newsletters, campanhas e informação sobre produtos e serviços</td><td>Consentimento do titular dos dados</td></tr>
+          <tr><td>Cumprimento de obrigações legais, incluindo resposta a entidades judiciais ou de supervisão</td><td>Cumprimento de obrigação legal</td></tr>
+          <tr><td>Melhoria da qualidade do serviço e deteção de fraude</td><td>Interesse legítimo da Farmácia Oriental de Lisboa</td></tr>
+        </table>
+      </article>
+
+      <article class="card" id="partilha">
+        <h2>Partilha de Dados com Terceiros</h2>
+        <hr>
+        <p>O tratamento dos seus dados poderá ser realizado por prestadores de serviços idóneos, contratados pela nossa empresa (por exemplo, fornecedores de alojamento web, envio de newsletters ou análise de tráfego). Nestes casos, são tomadas as medidas adequadas para assegurar que estas entidades oferecem as mais elevadas garantias no que respeita à proteção de dados.</p>
+        <p>Qualquer subcontratado tratará os dados pessoais em nome e por conta da Farmácia Oriental de Lisboa, cumprindo rigorosamente as normas legais aplicáveis em matéria de proteção de dados pessoais e segurança da informação. Não vendemos nem cedemos os seus dados pessoais a terceiros para fins comerciais próprios desses terceiros.</p>
+      </article>
+
+      <article class="card" id="transferencias">
+        <h2>Transferências Internacionais de Dados</h2>
+        <hr>
+        <p>Nos casos em que, no âmbito das finalidades descritas, seja necessário transferir dados para fora do Espaço Económico Europeu (EEE), a Farmácia Oriental de Lisboa cumprirá rigorosamente as disposições legais aplicáveis, nomeadamente quanto à adequação do país de destino em matéria de proteção de dados e aos requisitos exigidos para este tipo de transferências (como cláusulas contratuais-tipo aprovadas pela Comissão Europeia).</p>
+      </article>
+
+      <article class="card" id="conservacao">
+        <h2>Prazo de Conservação</h2>
+        <hr>
+        <p>Os seus dados pessoais são conservados apenas durante o período necessário para cumprir a finalidade para a qual foram recolhidos, ou durante o prazo exigido por obrigações legais ou contabilísticas aplicáveis, findo o qual serão eliminados ou anonimizados de forma segura.</p>
+      </article>
+
+      <article class="card" id="direitos">
+        <h2>Direitos dos Titulares dos Dados</h2>
+        <hr>
+        <p>Nos termos do RGPD, pode exercer, a todo o momento, os seguintes direitos sobre os seus dados pessoais:</p>
+        <ul>
+          <li>Direito de acesso aos dados que tratamos sobre si;</li>
+          <li>Direito de retificação ou atualização de dados incorretos ou incompletos;</li>
+          <li>Direito ao apagamento dos seus dados, quando aplicável;</li>
+          <li>Direito à limitação do tratamento;</li>
+          <li>Direito de oposição à utilização dos seus dados para fins comerciais;</li>
+          <li>Direito de retirar o consentimento a qualquer momento, sem comprometer a licitude do tratamento já efetuado;</li>
+          <li>Direito à portabilidade dos dados.</li>
+        </ul>
+        <p>Estes direitos podem ser exercidos através de qualquer um dos meios de contacto indicados nesta política. Tem ainda o direito de apresentar reclamação junto da <strong>Comissão Nacional de Proteção de Dados (CNPD)</strong>, autoridade de controlo em Portugal.</p>
+      </article>
+
+      <article class="card" id="automatizadas">
+        <h2>Decisões Automatizadas</h2>
+        <hr>
+        <p>A Farmácia Oriental de Lisboa poderá elaborar perfis de utilizadores para fins de melhoria de serviço, o que poderá permitir a adoção de decisões automatizadas, baseadas em características pessoais, preferências, histórico de comportamento e localização. Nestes casos, o titular tem sempre o direito de solicitar intervenção humana, de expressar o seu ponto de vista e de impugnar a decisão adotada.</p>
+      </article>
+
+      <article class="card" id="seguranca">
+        <h2>Medidas de Segurança</h2>
+        <hr>
+        <p>Aplicamos medidas técnicas e organizativas adequadas para proteger os dados pessoais dos utilizadores contra acesso não autorizado, perda, alteração ou divulgação indevida, em linha com as exigências do RGPD.</p>
+      </article>
+
+      <article class="card" id="alteracoes">
+        <h2>Alterações à Política de Privacidade</h2>
+        <hr>
+        <p>Esta Política de Privacidade poderá ser atualizada periodicamente, de forma a refletir alterações nas nossas práticas ou por razões legais, operacionais ou regulatórias. Recomendamos que a reveja periodicamente para se manter informado.</p>
+      </article>
+
+      <article class="card" id="contactos">
+        <h2>Contactos</h2>
+        <hr>
+        <p>Para exercer os seus direitos ou esclarecer qualquer dúvida sobre esta Política de Privacidade, pode contactar-nos através de:</p>
+        <ul>
+          <li>Email: <a href="mailto:orientalfarmacia@gmail.com">orientalfarmacia@gmail.com</a></li>
+          <li>Telefone: <a href="tel:+351213545079">213 545 079</a> / <a href="tel:+351969239914">96 923 9914</a></li>
+          <li>Morada: Avenida Dom João II, Lote 8, Loja A/B, 1990-306 Lisboa</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-top">
+      <div class="footer-grid">
+        <div class="brand-col">
+          <div class="logo-badge">
+            <img src="imagens.farmacia/farmaciaoriental.logo.main.jpg" alt="Farmácia Oriental de Lisboa">
+          </div>
+          <p>Farmácia de referência no Parque das Nações, Lisboa. Perto de si, perto de todos.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com/farmaciaorientaldelisboa" class="icon-btn" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/farmaciaorientaldelisboa/" class="icon-btn" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h5>Navegação</h5>
+          <ul>
+            <li><a href="FarmáciaOriental MAIN LINK UPDATED CLICK HERE.html">Início</a></li>
+            <li><a href="FarmáciaOriental MAIN LINK UPDATED CLICK HERE.html">Serviços</a></li>
+            <li><a href="FarmáciaOriental MAIN LINK UPDATED CLICK HERE.html">Pick Up and Go</a></li>
+            <li><a href="#equipa">Equipa</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Contactos</h5>
+          <ul>
+            <li><a href="tel:+351213545079">213 545 079</a></li>
+            <li><a href="tel:+351969239914">96 923 9914</a></li>
+            <li><a href="mailto:orientalfarmacia@gmail.com">orientalfarmacia@gmail.com</a></li>
+            <li><a href="https://maps.app.goo.gl/rGiCgUaszS7YqY368">Av. Dom João II, Lote 8, Lisboa</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+            <li><a href="politica-cookies.html">Política de Cookies</a></li>
+            <li><a href="https://www.livroreclamacoes.pt/INICIO/">Livro de Reclamações</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Farmácia Oriental de Lisboa</span>
+      <span>Todos os direitos reservados.</span>
+    </div>
+  </footer>
+</body>
+</html>
