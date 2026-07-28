@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serviços | Farmácia Oriental de Lisboa</title>
+  <style>
+    :root{
+      --bg: #FBFAFD;
+      --surface: #F4F0FA;
+      --surface-2: #EFE9F9;
+      --ink: #2A2438;
+      --ink-soft: #6B6478;
+      --purple-deep: #B691B3;
+      --purple-deep-2: #5C3659;
+      --purple-soft: #A98FD2;
+      --purple-pale: #E8DFF7;
+      --gold: #C9A66B;
+      --line: #E4DEF0;
+      --white: #FFFFFF;
+      --shadow-sm: 0 1px 2px rgba(43,30,66,.04), 0 1px 1px rgba(43,30,66,.03);
+      --shadow-md: 0 8px 24px rgba(43,30,66,.08);
+      --shadow-lg: 0 24px 60px rgba(43,30,66,.14);
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --ease: cubic-bezier(.16,.8,.28,1);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:'Inter',system-ui,-apple-system,sans-serif;
+      font-size:16px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    h1,h2,h3,h4{
+      font-family:'Fraunces',Georgia,serif;
+      color:var(--ink);
+      margin:0;
+      font-weight:500;
+      letter-spacing:-.01em;
+      line-height:1.12;
+    }
+    p{margin:0}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+    .eyebrow{
+      font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--purple-soft);font-weight:600;
+    }
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:14px 26px;border-radius:100px;font-weight:600;font-size:.94rem;
+      transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .3s var(--ease);
+      white-space:nowrap;
+    }
+    .btn-primary{background:var(--purple-deep);color:#fff;text-shadow:0 1px 1px rgba(0,0,0,.15)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+    .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+    .btn-ghost:hover{border-color:var(--purple-soft);transform:translateY(-2px)}
+    .btn-sm{padding:10px 18px;font-size:.84rem}
+
+    .nav{
+      position:sticky;top:0;z-index:100;background:var(--purple-deep);
+      border-bottom:1px solid rgba(0,0,0,.08);
+    }
+    .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+    .brand{display:flex;align-items:center;gap:10px;background:#fff;padding:8px 16px;border-radius:100px;box-shadow:var(--shadow-sm)}
+    .brand img{height:32px;width:auto}
+    .nav-links{display:flex;gap:32px;align-items:center}
+    .nav-links a{font-size:.92rem;font-weight:500;color:#fff;opacity:.86;position:relative;padding:4px 0;transition:opacity .25s;text-shadow:0 1px 1px rgba(0,0,0,.1)}
+    .nav-links a:hover{opacity:1}
+    .nav-links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:#fff;transition:width .3s var(--ease)}
+    .nav-links a:hover::after{width:100%}
+    .nav-cta{display:flex;align-items:center;gap:14px}
+    .nav .btn-ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+    .nav .btn-ghost:hover{border-color:#fff}
+    .nav .btn-primary{border:1.5px solid rgba(255,255,255,.4);box-shadow:0 2px 10px rgba(0,0,0,.1)}
+
+    .hero{
+      padding:80px 0 48px;
+      background:linear-gradient(135deg, #ffffff 0%, #f7ebf7 100%);
+    }
+    .hero h1{font-size:clamp(2rem,3.4vw,3rem);margin:0 0 16px;color:var(--purple-deep-2)}
+    .hero p.lead{max-width:780px;font-size:1.05rem;color:var(--ink-soft);margin:0 0 24px}
+
+    main{padding:16px 0 72px}
+    .card{
+      background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);
+      padding:30px 28px;box-shadow:var(--shadow-md);margin-bottom:24px;
+    }
+    .card h2, .card h3{margin-top:0;color:var(--purple-deep-2)}
+    .card p, .card li{color:var(--ink-soft)}
+    .card ul{padding-left:18px}
+    .card hr{border:0;border-top:1px solid var(--line);margin:18px 0 24px}
+    .note{color:var(--purple-deep-2);font-weight:600}
+    .service-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(240px,0.45fr);gap:24px;align-items:center}
+    .service-layout .service-content{display:flex;flex-direction:column;gap:12px}
+    .service-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+
+    .partner-grid{overflow:hidden;position:relative;margin-top:20px;padding:4px 0}
+    .partner-track{display:flex;gap:16px;align-items:center;width:max-content;animation:marquee 24s linear infinite}
+    .partner-track:hover{animation-play-state:paused}
+    .partner-item{flex:0 0 180px;min-height:92px;display:flex;align-items:center;justify-content:center;padding:16px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm)}
+    .partner-item img{max-height:60px;width:auto;object-fit:contain}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    footer{background:var(--purple-deep-2);color:#EFE6FB;padding-top:0}
+    .footer-top{padding:72px 0 48px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+    .brand-col .logo-badge{display:inline-flex;background:#fff;padding:10px 16px;border-radius:100px;margin-bottom:16px}
+    .brand-col .logo-badge img{height:30px;display:block}
+    .brand-col p{opacity:.65;font-size:.9rem;max-width:280px}
+    footer h5{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;opacity:.6;margin-bottom:18px;font-weight:600}
+    footer ul{list-style:none;padding:0;margin:0}
+    footer ul li{margin-bottom:11px}
+    footer a{opacity:.75;font-size:.92rem;transition:opacity .2s}
+    footer a:hover{opacity:1;text-decoration:underline}
+    .footer-social{display:flex;gap:10px;margin-top:18px}
+    .icon-btn{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);transition:background .2s}
+    .icon-btn:hover{background:rgba(255,255,255,.2)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding:22px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;opacity:.6}
+    @media (max-width:820px){.footer-grid{grid-template-columns:1fr 1fr;row-gap:36px}}
+
+    @media (max-width:920px){
+      .nav-links{display:none}
+      .nav .wrap{height:auto;padding:14px 24px}
+      .nav .btn-ghost{display:none}
+    }
+    @media (max-width:720px){
+      .card{padding:24px 20px}
+      .hero{padding-top:56px}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="imagens.farmacia/farmaciaoriental.logo.main.jpg" alt="Farmácia Oriental de Lisboa">
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="index.html">Serviços</a>
+        <a href="index.html">Pick Up and Go</a>
+        <a href="index.html">Equipa</a>
+        <a href="index.html">Localização</a>
+        <a href="index.html">Contactos</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="index.html" class="btn btn-ghost btn-sm">Contactar</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>Serviços gerais e especializados</h1>
+        <p class="lead">Conheça todos os serviços que a Farmácia Oriental tem para si, desde cuidados de enfermagem e check-up até apoio nutricional, fisioterapia, podologia, cosmética e parcerias empresariais.</p>
+        <a class="btn btn-primary" href="index.html">Contacte-nos</a>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <article class="card" id="enfermagem">
+        <div class="service-layout">
+          <div class="service-content">
+            <h2>Enfermagem</h2>
+            <hr>
+            <p>Serviço de atendimento diário e especializado que inclui:</p>
+            <ul>
+              <li>Realização de pensos</li>
+              <li>Tratamento de feridas</li>
+              <li>Injeções</li>
+              <li>Vacinas</li>
+            </ul>
+            <p class="note">Sujeito a marcação prévia.</p>
+          </div>
+          <img class="service-photo" src="imagens.farmacia/enfermagem.png" alt="Enfermagem">
+        </div>
+      </article>
+
+      <article class="card" id="checkup">
+        <div class="service-layout">
+          <div class="service-content">
+            <h2>Check up</h2>
+            <hr>
+            <p>Serviço diário e imediato que inclui a medição de parâmetros gerais de diagnóstico, nomeadamente:</p>
+            <ul>
+              <li>Colesterol total</li>
+              <li>Glicémia</li>
+              <li>Tensão arterial</li>
+              <li>Índice de Massa Corporal (IMC) e Índice de Gordura (IG)</li>
+              <li>Gravidez</li>
+            </ul>
+          </div>
+          <img class="service-photo" src="imagens.farmacia/checkup.png" alt="Check up">
+        </div>
+      </article>
+
+      <article class="card" id="nutricao">
+        <div class="service-layout">
+          <div class="service-content">
+            <h2>Nutrição</h2>
+            <hr>
+            <p>Consultas bimensais com base na <a href="https://www.dietaeasyslim.com/" target="_blank" rel="noreferrer">DIETA EASY SLIM</a>® para aconselhamento relativo a um estilo de vida saudável e um plano de alimentação adequado às suas necessidades.</p>
+            <p class="note">Sujeito a marcação prévia.</p>
+          </div>
+          <img class="service-photo" src="imagens.farmacia/nutrição.png" alt="Nutrição">
+        </div>
+      </article>
+
+      <article class="card" id="fisioterapia">
+        <div class="service-layout">
+          <div class="service-content">
+            <h2>Fisioterapia</h2>
+            <hr>
+            <p>Sessões de fisioterapia de natureza diversa, nomeadamente:</p>
+            <ul>
+              <li>Dermatofuncional</li>
+              <li>Respiratória</li>
+              <li>Reeducação postural</li>
+              <li>Musculo-esquelética</li>
+            </ul>
+          </div>
+          <img class="service-photo" src="imagens.farmacia/fisio.png" alt="Fisioterapia">
+        </div>
+      </article>
+
+      <article class="card" id="podologia">
+        <div class="service-layout">
+          <div class="service-content">
+            <h2>Podologia</h2>
+            <hr>
+            <p>Dispomos de diagnóstico e tratamento de inúmeras patologias do pé, analisadas por um profissional especializado.</p>
+            <ul>
+              <li>Alterações da pele</li>
+              <li>Alterações das unhas</li>
+              <li>Alterações do pé</li>
+            </ul>
+          </div>
+          <img class="service-photo" src="imagens.farmacia/podologia.jpeg" alt="Podologia">
+        </div>
+      </article>
+
+      <article class="card" id="cosmetica">
+        <div class="service-layout">
+          <div class="service-content">
+            <h2>Cosmética</h2>
+            <hr>
+            <p>A Farmácia Oriental de Lisboa dispõe de serviço especializado de aconselhamento em cosmética e dermocosmética.</p>
+          </div>
+          <img class="service-photo" src="imagens.farmacia/comestica.png" alt="Cosmética">
+        </div>
+      </article>
+
+      <article class="card" id="marcas">
+        <h2>As marcas com que trabalhamos</h2>
+        <hr>
+        <div class="partner-grid">
+          <div class="partner-track">
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/martiderm-smart-aging-logo-2_1-1920w.png" alt="Martiderm"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/logo.05b5f80-1920w.png" alt="Logo marca"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/7-1920w.png" alt="Marca 7"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/6-1920w.jpg" alt="Marca 6"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4-1920w.png" alt="Marca 4"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/5-1920w.png" alt="Marca 5"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/3-1920w.png" alt="Marca 3"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/2-1920w.png" alt="Marca 2"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/1-1920w.png" alt="Marca 1"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/martiderm-smart-aging-logo-2_1-1920w.png" alt="Martiderm"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/logo.05b5f80-1920w.png" alt="Logo marca"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/7-1920w.png" alt="Marca 7"></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" id="parcerias">
+        <h2>Parcerias empresariais</h2>
+        <hr>
+        <p>A Farmácia Oriental disponibiliza um protocolo de parceria com diversas empresas, oferecendo benefícios exclusivos aos seus colaboradores.</p>
+        <p>Para mais informações, contacte-nos através do email <a href="mailto:orientalfarmacia@gmail.com">orientalfarmacia@gmail.com</a>.</p>
+        <div class="partner-grid">
+          <div class="partner-track">
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_fdbe8028484847b799fe5bab47633fd9-mv2-1920w.png" alt="Parceria 1"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_ed011a3e362344bfa1e9bd5a4fb159bd-mv2-1920w.png" alt="Parceria 2"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_dd0a618483e345f8abe31989ec15e686-mv2-1920w.png" alt="Parceria 3"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_bfa64106e7094496ad7c84eb9a1eabd3-mv2-1920w.png" alt="Parceria 4"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_a67b80ecfaf84c468cba34765621c9a4-mv2-1920w.png" alt="Parceria 5"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_3096815acc0a42ccb50fd06fc2d6229c-mv2-1920w.png" alt="Parceria 6"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_763266db0c514fa9a2a1303bc6c0d53a-mv2-1920w.png" alt="Parceria 7"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_7112cd8c7db24d25a8c67175f13210e7-mv2-1920w.png" alt="Parceria 8"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_6042d8951b884683be585d1be27a1ae7-mv2-1920w.png" alt="Parceria 9"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_63b978e33597486cb6d3644b4086a3bd-mv2-1920w.png" alt="Parceria 10"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_29d54fca92124bc0a0da64f54beb4559-mv2-1920w.png" alt="Parceria 11"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_20b55f96f56a4a71b8c0a24182ecb29c-mv2-1920w.png" alt="Parceria 12"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_5e0875b10c1342caaa8f7bc29f3ec4cc-mv2-1920w.png" alt="Parceria 13"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_6da5f0b6bbf849f0b94ff39d4f1f4821-mv2-1920w.png" alt="Parceria 14"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_8bee8b1cdd6e45c895cb389fea526f77-mv2-1920w.png" alt="Parceria 15"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_4b0290e79dc24b4a9d11aaa8053320e7-mv2-1920w.png" alt="Parceria 16"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4d03bf_a334549341234eefa33bf1ec65d9e74f-mv2-1920w.jpg" alt="Parceria 17"></div>
+            <div class="partner-item"><img src="https://le-de.cdn-website.com/9e99bec5a2a2407583309884b87e8469/dms3rep/multi/opt/4eb537_fdbe8028484847b799fe5bab47633fd9-mv2-1920w.png" alt="Parceria 1"></div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-top">
+      <div class="footer-grid">
+        <div class="brand-col">
+          <div class="logo-badge">
+            <img src="imagens.farmacia/farmaciaoriental.logo.main.jpg" alt="Farmácia Oriental de Lisboa">
+          </div>
+          <p>Farmácia de referência no Parque das Nações, Lisboa. Perto de si, perto de todos.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com/farmaciaorientaldelisboa" class="icon-btn" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/farmaciaorientaldelisboa/" class="icon-btn" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h5>Navegação</h5>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="index.html">Serviços</a></li>
+            <li><a href="index.html">Pick Up and Go</a></li>
+            <li><a href="index.html">Equipa</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Contactos</h5>
+          <ul>
+            <li><a href="tel:+351213545079">213 545 079</a></li>
+            <li><a href="tel:+351969239914">96 923 9914</a></li>
+            <li><a href="mailto:orientalfarmacia@gmail.com">orientalfarmacia@gmail.com</a></li>
+            <li><a href="https://maps.app.goo.gl/rGiCgUaszS7YqY368">Av. Dom João II, Lote 8, Lisboa</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+            <li><a href="politica-cookies.html">Política de Cookies</a></li>
+            <li><a href="https://www.livroreclamacoes.pt/INICIO/">Livro de Reclamações</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Farmácia Oriental de Lisboa</span>
+      <span>Todos os direitos reservados.</span>
+    </div>
+  </footer>
+</body>
+</html>
